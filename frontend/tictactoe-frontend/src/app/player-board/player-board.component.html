@@ -1,0 +1,29 @@
+<div class="score">
+	<p>Computer: {{gameservice.computerScore}}</p> 
+	<P>human:   {{gameservice.humanScore}}</P>
+</div>
+
+<div class="game">
+	<h1  class="status turn">{{ gameservice.turn }}</h1>
+  <div class="button-back"  (click)="leaveGame()">Leave game and go back to lobby
+  </div>
+  <table>
+    <tr>
+      <td class="cell" (click)="gameservice.humanClick($event)" id="0">{{gameservice.getCell(0) }}</td>
+      <td class="cell" (click)="gameservice.humanClick($event)" id="1">{{gameservice.getCell(1) }}</td>
+      <td class="cell" (click)="gameservice.humanClick($event)" id="2">{{gameservice.getCell(2) }}</td>
+    </tr>
+    <tr>
+      <td class="cell" (click)="gameservice.humanClick($event)" id="3">{{ gameservice.getCell(3) }}</td>
+      <td class="cell" (click)="gameservice.humanClick($event)" id="4">{{ gameservice.getCell(4) }}</td>
+      <td class="cell" (click)="gameservice.humanClick($event)" id="5">{{ gameservice.getCell(5) }}</td>
+    </tr>
+    <tr>
+      <td class="cell" (click)="gameservice.humanClick($event)" id="6">{{ gameservice.getCell(6) }}</td>
+      <td class="cell" (click)="gameservice.humanClick($event)" id="7">{{ gameservice.getCell(7) }}</td>
+      <td class="cell" (click)="gameservice.humanClick($event)" id="8">{{ gameservice.getCell(8) }}</td>
+    </tr>
+  </table>
+  <h1 *ngIf="!gameservice.spectator" class="status">{{ gameservice.status }}</h1>
+</div>
+
