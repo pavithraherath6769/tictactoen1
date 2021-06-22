@@ -20,8 +20,6 @@ export class GameServiceService {
     protocol: environment.wsProtocol
   })
   public userName: string = '';
-  // public users: string[] = []
-  // public games: Array<any> = []
   public board: Array<string | number> = [];
   public locked: boolean = false;
   public ai: boolean = false;
@@ -45,14 +43,6 @@ export class GameServiceService {
   private handleMessage(message: Message): void {
     let { message: msg } = message
     switch (message.type) {
-      // case 'users':
-      //   this.users = msg
-      //   break
- 
-      // case 'leaveGame':
-      //   this.status = 'Your opponent has left the game!'
-      //   break
-
       case 'turn':
         this.board = msg.board
         if (msg.winner) {
@@ -76,9 +66,7 @@ export class GameServiceService {
       .post<{ success: boolean }>(environment.apiUrl + '/login', { name })
       .toPromise()
   }
-  // login(name:string){
-
-  // }
+ 
   startAIGame(){
     this.router.navigateByUrl('/board')
     this.player = 'O'

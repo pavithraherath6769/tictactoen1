@@ -111,9 +111,7 @@ export default class WebSocketServer {
     this.users = this.users.filter(user => user.connection !== connection)
   }
 
-  /**
-   * Get running game of a user.
-   */
+  
   public getGame(
     connection: websocket.connection
   ): { game: Game | null; opponent: User | null } {

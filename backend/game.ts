@@ -2,7 +2,7 @@
 //game logic class
 class Game {
     
-    winCombinationsnumbers:any
+    winCombinationsnumbers: number[][]
     player: string
     ai: string
   
@@ -17,7 +17,7 @@ class Game {
         [0, 4, 8],
         [6, 4, 2]
       ]
-      this.player = 'O'
+      this.player = 'o'
       this.ai = 'X'
     }
   
@@ -30,7 +30,8 @@ class Game {
       return (
         this.checkTie(board) ||
         this.checkWin(board, this.ai)
-         || this.checkWin(board, this.player)
+         || 
+         this.checkWin(board, this.player)
       )
     }
   
@@ -47,7 +48,7 @@ class Game {
   
       let gameWon = null
       for (let [index, win] of this.winCombinationsnumbers.entries()) {
-        if (win.every((elem: any) => plays.indexOf(elem) > -1)) {
+        if (win.every((elem) => plays.indexOf(elem) > -1)) {
           // gameWon = player
           gameWon = {index: index, player: player};
           break
@@ -57,9 +58,10 @@ class Game {
     }
   
     bestSpot(board: Array<string | number>) {
-    // let index = this.minimax(board, this.ai).index;
-    // return {row: Math.ceil((index + 1) / 3), col: (index + 1) % 3 === 0 ? 3 : (index + 1) % 3}
+      let index = this.minimax(board, this.ai).index;
+      
       return this.minimax(board, this.ai).index
+      
     }
   
     minimax(newBoard: Array<string | number>, player: string): any {
@@ -68,7 +70,7 @@ class Game {
       if (this.checkWin(newBoard, player)) {
         return { score: -10 }
       } else if (this.checkWin(newBoard, this.ai)) {
-        return { score: 20 }
+        return { score: 10 }
       } else if (availSpots.length === 0) {
         return { score: 0 }
       }
