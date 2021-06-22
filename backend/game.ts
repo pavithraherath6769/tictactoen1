@@ -2,7 +2,7 @@
 //game logic class
 class Game {
     
-    winCombinationsnumbers: any
+    winCombinationsnumbers:any
     player: string
     ai: string
   
@@ -48,7 +48,8 @@ class Game {
       let gameWon = null
       for (let [index, win] of this.winCombinationsnumbers.entries()) {
         if (win.every((elem: any) => plays.indexOf(elem) > -1)) {
-          gameWon = player
+          // gameWon = player
+          gameWon = {index: index, player: player};
           break
         }
       }
@@ -56,6 +57,8 @@ class Game {
     }
   
     bestSpot(board: Array<string | number>) {
+    // let index = this.minimax(board, this.ai).index;
+    // return {row: Math.ceil((index + 1) / 3), col: (index + 1) % 3 === 0 ? 3 : (index + 1) % 3}
       return this.minimax(board, this.ai).index
     }
   

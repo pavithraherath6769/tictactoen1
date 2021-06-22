@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { GameServiceService } from '../game-service.service';
 
 @Component({
@@ -9,12 +10,13 @@ import { GameServiceService } from '../game-service.service';
 })
 export class PlayerBoardComponent implements OnInit {
 
-  constructor(public gameservice:GameServiceService,  private router: Router) { }
+  constructor(public gameservice:GameServiceService,  private router: Router, private toastrservice: ToastrService) { }
 
   ngOnInit(): void {
   }
   leaveGame(){
     this.gameservice.leaveGame();
+    this.toastrservice.success('Game Leave Success', 'success');
     this.router.navigateByUrl('/lobby')
   }
 }

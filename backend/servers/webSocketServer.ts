@@ -53,7 +53,7 @@ export default class WebSocketServer {
   //handels the message
   private handleMessage(connection: websocket.connection, msg: any): void {
     let from = msg.from ? this.users.find(user => user.name === msg.from) : null
-    let to = msg.to ? this.users.find(user => user.name === msg.to) : null
+    // let to = msg.to ? this.users.find(user => user.name === msg.to) : null
     switch (msg.type) {
       case 'enterLobby':
         this.addUser(connection, msg.name)

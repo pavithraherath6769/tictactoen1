@@ -2,6 +2,7 @@
     <div class="lobby">
       <div class="lobby-list box">
         <button class="start-ai" (click)="gameservice.startAIGame()">Start game against AI</button>
+        <i (click)="musicSound()" [ngClass]="soundicon == true ? 'bi bi-volume-up-fill soundicon': 'bi bi-volume-mute soundicon' "  ></i>
       </div>
     </div>
   </div>
