@@ -25,7 +25,7 @@ export class PlayerLobbyComponent implements OnInit , OnDestroy  {
     this.soundicon= !this.soundicon;
     if(this.soundicon == true){
       this.music.play();
-      this.toastrservice.info('music is started ;-)', 'info');
+      this.toastrservice.info('music is playing', 'info');
     } else{
       this.music.stop();
       this.toastrservice.info('music is stopped', 'info');

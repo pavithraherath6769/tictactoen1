@@ -17,7 +17,7 @@ class Game {
         [0, 4, 8],
         [6, 4, 2]
       ]
-      this.player = 'o'
+      this.player = 'O'
       this.ai = 'X'
     }
   

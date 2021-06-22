@@ -1,8 +1,10 @@
 
 <div class="login">
     <h1> TIC TAC TOE</h1>
+    <br>
     <form>
       <div class="field" (keydown.enter)="login()">
+        
           <input type="text" id="name" [(ngModel)]="name" name="name" placeholder="Who Are You?" />
           <button type="button" class="btn btn-lg btn-primary" (click)="login()" (keydown.enter)="login()" >Play</button>
       

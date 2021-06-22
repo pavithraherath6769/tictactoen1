@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { webSocket } from 'rxjs/webSocket'
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http'
+import { ToastrService } from 'ngx-toastr';
 
 
 interface Message {
@@ -30,7 +31,7 @@ export class GameServiceService {
   public humanScore: number = 0;
   public turn = '';
 
-  constructor(private router: Router , private http: HttpClient) { 
+  constructor(private router: Router , private http: HttpClient,private toastrservice: ToastrService) { 
     this.websocket.subscribe(
 
       (message:any) =>this.handleMessage(message),
@@ -48,10 +49,13 @@ export class GameServiceService {
         if (msg.winner) {
           if (msg.winner == this.player) {
             this.status = 'You won!'
+            this.toastrservice.success('You WON!', 'Game Status');
           } else if (msg.winner == 'Tie') {
             this.status = 'Tie!'
+            this.toastrservice.success('TIE!', 'Game Status');
           } else {
             this.status = 'You lost!'
+            this.toastrservice.success('You lost!', 'Game Status');
           }
         } else {
           this.locked = msg.next !== this.player
@@ -118,7 +122,8 @@ export class GameServiceService {
     aifn2() { 
       this.locked = true;
       this.turn ='AI first Move'
-      this.websocket.next({ type: 'AITurn', board: this.board }); 
+      this.websocket.next({ type: 'AITurn', board: this.board });
+      this.toastrservice.success('AI will move first', 'Game Status'); 
       console.log('AI first');
     } 
   
@@ -127,5 +132,6 @@ export class GameServiceService {
       this.locked = false
       this.turn ='Player first Move'
       console.log('Player first');
+      this.toastrservice.success('Please make your move', 'Game Status'); 
     }
 }

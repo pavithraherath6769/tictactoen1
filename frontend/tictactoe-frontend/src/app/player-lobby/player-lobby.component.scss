@@ -1,6 +1,6 @@
 .lobby-wrapper {
     transition: all 0.5s ease;
-    background-image: linear-gradient(#c0b8a5, #e1e0db);
+    background-image: linear-gradient(#d1c29e, #dfd6a8);
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
@@ -15,8 +15,8 @@
         width: 100%;
         padding: 1rem;
         font-size: 1.3rem;
-        color: #e1e0db;
-        background-color: #313a3d;
+        color: #dfdac0;
+        background-color: #222d31;
         border: none;
         outline: none;
         border-radius: 5px;
@@ -26,7 +26,6 @@
     .soundicon{
         font-size: 50px;
         margin-left: 100%;
-        
         cursor: pointer;
     }
 
